@@ -1,95 +1,155 @@
+"use client";
+import { useState } from "react";
 import Image from "next/image";
 import styles from "./page.module.css";
 
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [page, setPage] = useState("home");
 
-        <div className={styles.ctas}>
+  const Navbar = () => (
+    <nav className={styles.navbar}>
+      <ul className={styles.navList}>
+        <li onClick={() => setPage("home")}>Home</li>
+        <li onClick={() => setPage("about")}>About</li>
+        <li onClick={() => setPage("contact")}>Contact Us</li>
+      </ul>
+    </nav>
+  );
+
+  const renderPage = () => {
+    if (page === "home") {
+      return (
+        <>
+          <div className={styles.hero}>
+            <h1 className={styles.title}>Welcome to Our Company</h1>
+            <p className={styles.subtitle}>
+              Innovating solutions for a better tomorrow
+            </p>
+          </div>
+
+          <Image
+            className={styles.logo}
+            src="/next.svg"
+            alt="Next.js logo"
+            width={180}
+            height={38}
+            priority
+          />
+
+          <section className={styles.features}>
+            <div className={styles.featureCard}>
+              <h3>Innovation</h3>
+              <p>Cutting-edge technology solutions</p>
+            </div>
+            <div className={styles.featureCard}>
+              <h3>Quality</h3>
+              <p>Excellence in every project</p>
+            </div>
+            <div className={styles.featureCard}>
+              <h3>Support</h3>
+              <p>24/7 customer service</p>
+            </div>
+          </section>
+
+          <div className={styles.ctas}>
+            <button
+              className={styles.primary}
+              onClick={() => setPage("about")}
+            >
+              Learn More About Us
+            </button>
+            <button
+              onClick={() => setPage("contact")}
+              className={styles.secondary}
+            >
+              Contact Us
+            </button>
+          </div>
+        </>
+      );
+    }
+
+    if (page === "about") {
+      return (
+        <section className={styles.section}>
+          <h1>About Our Company</h1>
+          <p>
+            We are a forward-thinking company committed to innovation, quality,
+            and customer satisfaction. Our mission is to deliver outstanding
+            solutions that empower businesses to thrive in the digital era.
+          </p>
+        </section>
+      );
+    }
+
+    if (page === "contact") {
+      return (
+        <section className={styles.section}>
+          <h1>Contact Us</h1>
+          <p>
+            Have questions or need help? Reach out anytime.
+          </p>
+          <ul>
+            <li>Email: support@ourcompany.com</li>
+            <li>Phone: +62 812-3456-7890</li>
+            <li>Address: Jakarta, Indonesia</li>
+          </ul>
+        </section>
+      );
+    }
+  };
+
+  return (
+    <>
+      <Navbar />
+      <div className={styles.page}>
+        <main className={styles.main}>{renderPage()}</main>
+
+        <footer className={styles.footer}>
           <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+            href="https://nextjs.org/learn"
             target="_blank"
             rel="noopener noreferrer"
           >
             <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              aria-hidden
+              src="/file.svg"
+              alt="File icon"
+              width={16}
+              height={16}
             />
-            Deploy now
+            Learn
           </a>
           <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+            href="https://vercel.com/templates?framework=next.js"
             target="_blank"
             rel="noopener noreferrer"
-            className={styles.secondary}
           >
-            Read our docs
+            <Image
+              aria-hidden
+              src="/window.svg"
+              alt="Window icon"
+              width={16}
+              height={16}
+            />
+            Examples
           </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+          <a
+            href="https://nextjs.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image
+              aria-hidden
+              src="/globe.svg"
+              alt="Globe icon"
+              width={16}
+              height={16}
+            />
+            Go to nextjs.org →
+          </a>
+        </footer>
+      </div>
+    </>
   );
 }
