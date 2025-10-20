@@ -192,29 +192,74 @@
   font-size: 16px;
 }
 
-/* --------- FOOTER --------- */
-.footer {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 24px;
-  padding-top: 40px;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+/* TEAM SECTION */
+.team {
+  text-align: center;
+  padding: 5rem 2rem;
+  background: linear-gradient(to bottom, #fffaf5, #fff3e4);
 }
 
-.footer a {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--wet-charcoal);
-  text-decoration: none;
+.team h2 {
+  font-size: 2rem;
+  margin-bottom: 3rem;
+  color: #ff7a00;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+}
+
+.teamCard {
+  background: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  padding: 2rem 1rem;
+  width: 230px;
   transition: all 0.3s ease;
-  font-weight: 500;
 }
 
-.footer a:hover {
-  color: var(--purple-seduction);
-  transform: translateY(-2px);
+.teamCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 18px rgba(255, 122, 0, 0.2);
+}
+
+.teamImg {
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  border: 3px solid #ffb86b;
+  object-fit: cover;
+}
+
+.teamCard h3 {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+  color: #333;
+}
+
+.teamCard p {
+  color: #777;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.teamLink {
+  display: inline-block;
+  text-decoration: none;
+  background-color: #ff7a00;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.teamLink:hover {
+  background-color: #e56a00;
 }
 
 /* --------- RESPONSIVE --------- */
